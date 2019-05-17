@@ -104,3 +104,36 @@ void rightForwards(void)
     digitalWrite(10,HIGH); //IN3
     digitalWrite(11,LOW); //IN4
 }
+
+void photoGate(void)
+{
+  // Read the light levels (ambient, red, green, blue)
+  if (  !apds.readAmbientLight(ambient_light) ||
+        !apds.readRedLight(red_light) ||
+        !apds.readGreenLight(green_light) ||
+        !apds.readBlueLight(blue_light) ) 
+     {
+    Serial.println("Error reading light values");
+     } 
+     else 
+     {
+    Serial.print("Ambient: ");
+    Serial.print(ambient_light);
+    Serial.print(" Red: ");
+    Serial.print(red_light);
+    Serial.print(" Green: ");
+    Serial.print(green_light);
+    Serial.print(" Blue: ");
+    Serial.println(blue_light);
+     }
+
+if(red_light>500)
+     {
+  digitalWrite(5,LOW);
+  digitalWrite(6,LOW);
+     }
+  // Wait 1 second before next reading
+  delay(100);
+}
+
+
