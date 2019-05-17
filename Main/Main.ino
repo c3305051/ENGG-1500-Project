@@ -1,9 +1,15 @@
 
 #include <SparkFun_APDS9960.h>
+#include <wire.h>
 
 // Global Variables
 SparkFun_APDS9960 apds = SparkFun_APDS9960();
 uint8_t proximity_data = 0;
+uint16_t ambient_light = 0;
+uint16_t red_light = 0;
+uint16_t green_light = 0;
+uint16_t blue_light = 0;
+
 
 #include <ENGG1500Lib.h>
 #define Left 5
@@ -89,4 +95,5 @@ void loop() {
     
       
     followLine();
+    photoGate();
 }
